@@ -1,10 +1,13 @@
 import Banner from "./Banner";
+import Features from "./Features";
+import TopDeliveryMan from "./TopDeliveryMan";
 
 const Home = () => {
     return (
         <div>
-            <h1>This is home</h1>
             <Banner></Banner>
+            <Features></Features>
+            <TopDeliveryMan></TopDeliveryMan>
         </div>
     );
 };
