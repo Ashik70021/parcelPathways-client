@@ -1,9 +1,21 @@
+import { Link, NavLink } from "react-router-dom";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
     const navItems = <>
-        <li><a>Item 1</a></li>
-        <li><a>Item 3</a></li>
+        <li><NavLink to="/"><a>Home</a></NavLink></li>
+        <li><NavLink to="/aboutUs"><a>About us</a></NavLink></li>
+        <li><NavLink to="/secret"><a>Secret</a></NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -16,7 +28,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">ParcelPathway</a>
+                <a className="text-3xl font-semibold">ParcelPathway</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -24,7 +36,29 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <NavLink to="/dashboard" className="flex items-center text-2xl mr-4"><MdOutlineDashboardCustomize /></NavLink>
+                {
+                    user ?
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <a className="justify-between">
+                                        {user?.displayName}
+                                    </a>
+                                </li>
+                                <li><a>Settings</a></li>
+                                <li onClick={handleLogOut}><a>Logout</a></li>
+                            </ul>
+                        </div>
+                        :
+                        <Link to="/login"><a className="btn">Login</a></Link>
+
+                }
             </div>
         </div>
     );
