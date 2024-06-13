@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import Features from "./Features";
+import Statistics from "./Statistics";
 import TopDeliveryMan from "./TopDeliveryMan";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Features></Features>
+            <Statistics></Statistics>
             <TopDeliveryMan></TopDeliveryMan>
         </div>
     );
