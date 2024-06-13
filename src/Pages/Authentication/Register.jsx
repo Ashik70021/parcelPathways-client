@@ -1,17 +1,19 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
-    const {createUser,updateUserProfile} = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic()
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: '',
-        email: '', 
+        email: '',
         password: '',
         confirmPassword: '',
-        type: 'User' 
+        type: 'User'
     });
 
     const handleChange = (e) => {
@@ -23,21 +25,36 @@ const Register = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();        
+        e.preventDefault();
         console.log(formData);
 
         createUser(formData.email, formData.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            updateUserProfile(formData.name, formData.photoURL, formData.type)
-            .then(() =>{
-                console.log("user profile info updated")
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(formData.name, formData.photoURL)
+                    .then(() => {
+                        // Create user entry in Database
+                        const userInfo = {
+                            name: formData.name,
+                            email: formData.email,
+                            type: formData.type
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                console.log(res)
+                                if (res.data.insertedId) {
+                               
+                                    console.log("user profile info updated")
 
-                navigate('/')
+                                    navigate('/');
+                                }
+                            })
+                            .catch(error => console.log(error))
+
+                    })
+                    .catch(error => console.log(error))
             })
-            .catch(error => console.log(error))
-        })
         // setUser()
     };
 
@@ -108,7 +125,7 @@ const Register = () => {
                             required
                         />
                     </div>
-                    
+
                     <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600">
                         Register
                     </button>

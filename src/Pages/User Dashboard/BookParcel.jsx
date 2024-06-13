@@ -50,127 +50,133 @@ const BookParcel = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="max-w-md w-full bg-white shadow-md rounded-lg p-8">
+            <div className="max-w-full w-full bg-white shadow-md rounded-lg p-8">
                 <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-6">Book a Parcel</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label htmlFor="senderName" className="block text-gray-700">Sender Name</label>
-                        <input
-                            type="text"
-                            id="senderName"
-                            name="senderName"
-                            value={formData.senderName}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="senderEmail" className="block text-gray-700">Sender Email</label>
-                        <input
-                            type="email"
-                            id="senderEmail"
-                            name="senderEmail"
-                            value={formData.senderEmail}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="senderPhoneNumber" className="block text-gray-700">Sender Phone Number</label>
-                        <input
-                            type="text"
-                            id="senderPhoneNumber"
-                            name="senderPhoneNumber"
-                            value={formData.senderPhoneNumber}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="parcelType" className="block text-gray-700">Parcel Type</label>
-                        <input
-                            type="text"
-                            id="parcelType"
-                            name="parcelType"
-                            value={formData.parcelType}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="parcelWeight" className="block text-gray-700">Parcel Weight (kg)</label>
-                        <input
-                            type="number"
-                            id="parcelWeight"
-                            name="parcelWeight"
-                            value={formData.parcelWeight}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="receiverName" className="block text-gray-700">Receiver Name</label>
-                        <input
-                            type="text"
-                            id="receiverName"
-                            name="receiverName"
-                            value={formData.receiverName}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="receiverPhoneNumber" className="block text-gray-700">Receiver Phone Number</label>
-                        <input
-                            type="text"
-                            id="receiverPhoneNumber"
-                            name="receiverPhoneNumber"
-                            value={formData.receiverPhoneNumber}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="deliveryAddress" className="block text-gray-700">Parcel Delivery Address</label>
-                        <input
-                            type="text"
-                            id="deliveryAddress"
-                            name="deliveryAddress"
-                            value={formData.deliveryAddress}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="receiverAddress" className="block text-gray-700">Receiver Address</label>
-                        <input
-                            type="text"
-                            id="receiverAddress"
-                            name="receiverAddress"
-                            value={formData.receiverAddress}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <label htmlFor="price" className="block text-gray-700">Price (Auto Calculated)</label>
-                        <input
-                            type="text"
-                            id="price"
-                            name="price"
-                            value={formData.price}
-                            readOnly
-                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg bg-gray-200"
-                        />
+                    <div className="flex gap-24 justify-center">
+                        <div>
+                            <div className="mb-4">
+                                <label htmlFor="senderName" className=" text-gray-700">Sender Name</label>
+                                <input
+                                    type="text"
+                                    id="senderName"
+                                    name="senderName"
+                                    value={formData.senderName}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="senderEmail" className=" text-gray-700">Sender Email</label>
+                                <input
+                                    type="email"
+                                    id="senderEmail"
+                                    name="senderEmail"
+                                    value={formData.senderEmail}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="senderPhoneNumber" className=" text-gray-700">Sender Phone Number</label>
+                                <input
+                                    type="text"
+                                    id="senderPhoneNumber"
+                                    name="senderPhoneNumber"
+                                    value={formData.senderPhoneNumber}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="parcelType" className=" text-gray-700">Parcel Type</label>
+                                <input
+                                    type="text"
+                                    id="parcelType"
+                                    name="parcelType"
+                                    value={formData.parcelType}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="parcelWeight" className=" text-gray-700">Parcel Weight (kg)</label>
+                                <input
+                                    type="number"
+                                    id="parcelWeight"
+                                    name="parcelWeight"
+                                    value={formData.parcelWeight}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="mb-4">
+                                <label htmlFor="receiverName" className=" text-gray-700">Receiver Name</label>
+                                <input
+                                    type="text"
+                                    id="receiverName"
+                                    name="receiverName"
+                                    value={formData.receiverName}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="receiverPhoneNumber" className="text-gray-700">Receiver Phone Number</label>
+                                <input
+                                    type="text"
+                                    id="receiverPhoneNumber"
+                                    name="receiverPhoneNumber"
+                                    value={formData.receiverPhoneNumber}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="deliveryAddress" className="text-gray-700">Parcel Delivery Address</label>
+                                <input
+                                    type="text"
+                                    id="deliveryAddress"
+                                    name="deliveryAddress"
+                                    value={formData.deliveryAddress}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="receiverAddress" className=" text-gray-700">Receiver Address</label>
+                                <input
+                                    type="text"
+                                    id="receiverAddress"
+                                    name="receiverAddress"
+                                    value={formData.receiverAddress}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-6">
+                                <label htmlFor="price" className=" text-gray-700">Price (Auto Calculated)</label>
+                                <input
+                                    type="text"
+                                    id="price"
+                                    name="price"
+                                    value={formData.price}
+                                    readOnly
+                                    className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg bg-gray-200"
+                                />
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600">
                         Booking
