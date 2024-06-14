@@ -18,6 +18,9 @@ import AllParcel from "../Pages/Admin Dashboard/AllParcel";
 import DeliveryDashboard from "../Layout/DeliveryDashboard";
 import MyReviews from "../Pages/DeliveryDashboard/MyReviews";
 import MyDeliveryList from "../Pages/DeliveryDashboard/MyDeliveryList";
+import UserDashboardHome from "../Pages/User Dashboard/UserDashboardHome";
+import AdminDashboardHome from "../Pages/Admin Dashboard/AdminDashboardHome";
+import DeliveryDashboardHome from "../Pages/DeliveryDashboard/DeliveryDashboardHome";
 
 
 export const router = createBrowserRouter([
@@ -49,6 +52,10 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
+        path: 'userhome',
+        element: <UserDashboardHome></UserDashboardHome>,
+      },
+      {
         path: 'bookparcel',
         element: <BookParcel></BookParcel>,
       },
@@ -65,6 +72,10 @@ export const router = createBrowserRouter([
     path: 'admindashboard',
     element: <AdminDashboard></AdminDashboard>,
     children: [
+      {
+        path: 'adminhome',
+        element: <AdminDashboardHome></AdminDashboardHome>,
+      },
       {
         path: 'users',
         element: <AllUsers></AllUsers>,
@@ -86,12 +97,16 @@ export const router = createBrowserRouter([
     element: <DeliveryDashboard></DeliveryDashboard>,
     children: [
       {
+        path: 'deliveryhome',
+        element: <DeliveryDashboardHome></DeliveryDashboardHome>,
+      },
+      {
         path: 'deliverylist',
-        element: <MyDeliveryList></MyDeliveryList>
+        element: <MyDeliveryList></MyDeliveryList>,
       },
       {
         path: 'reviews',
-        element: <MyReviews></MyReviews>
+        element: <MyReviews></MyReviews>,
       },
       
     ]

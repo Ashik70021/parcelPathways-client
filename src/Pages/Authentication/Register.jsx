@@ -10,6 +10,7 @@ const Register = () => {
 
     const [formData, setFormData] = useState({
         name: '',
+        image: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -37,6 +38,7 @@ const Register = () => {
                         // Create user entry in Database
                         const userInfo = {
                             name: formData.name,
+                            image: formData.image,
                             email: formData.email,
                             type: formData.type
                         }
@@ -70,6 +72,18 @@ const Register = () => {
                             id="name"
                             name="name"
                             value={formData.name}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="name" className="block text-gray-700">Photo Url</label>
+                        <input
+                            type="text"
+                            id="image"
+                            name="image"
+                            value={formData.image}
                             onChange={handleChange}
                             className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
                             required

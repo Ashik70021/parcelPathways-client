@@ -1,18 +1,49 @@
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { IoIosNotifications } from "react-icons/io";
+
+
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     console.log(user)
+
+    const [userdb, setUserdb] = useState({});
+    console.log(userdb)
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/users/${user?.email}`)
+        .then(res => res.json())
+        .then(data => {
+            setUserdb(data)
+        })
+        .catch( (error)=>{
+            console.log(error)
+        })
+    },[user?.email])
+
+
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => console.log(error))
     }
+
+
+
+    let dashboardlink = "/dashboard/userhome"
+    if(userdb?.type == 'admin'){
+        dashboardlink = '/admindashboard/adminhome'
+    }
+    else if(userdb?.type == 'Delivery Man'){
+        dashboardlink = '/deliverydashboard/deliveryhome'
+    }
+    console.log(dashboardlink)
+    
+    
+
 
     const navItems = <>
         <li><NavLink to="/"><a>Home</a></NavLink></li>
@@ -30,7 +61,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                
+
                 <a className="text-3xl font-semibold">ParcelPathway</a>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -39,8 +70,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <IoIosNotifications className="text-2xl mr-2" />
-                <NavLink to="/dashboard" className="flex items-center text-2xl mr-4"><MdOutlineDashboardCustomize /></NavLink>
+                <Link><IoIosNotifications className="text-2xl mr-2" /></Link>
+                <NavLink to={`${dashboardlink}`} className="flex items-center text-2xl mr-4"><MdOutlineDashboardCustomize /></NavLink>
                 {
                     user ?
                         <div className="dropdown dropdown-end">
@@ -55,9 +86,7 @@ const Navbar = () => {
                                         {user?.displayName}
                                     </a>
                                 </li>
-                                <li><Link to="/dashboard">Dashboard</Link></li>
-                                <li><Link to="/admindashboard">Admin Dashboard</Link></li>
-                                <li><Link to="/deliverydashboard">Delivery man Dashboard</Link></li>
+                                <li><Link to={`${dashboardlink}`}>Dashboard</Link></li>
                                 <li onClick={handleLogOut}><a>Logout</a></li>
                             </ul>
                         </div>
