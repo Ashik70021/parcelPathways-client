@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { IoIosNotifications } from "react-icons/io";
+
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -28,6 +30,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
+                
                 <a className="text-3xl font-semibold">ParcelPathway</a>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -36,6 +39,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <IoIosNotifications className="text-2xl mr-2" />
                 <NavLink to="/dashboard" className="flex items-center text-2xl mr-4"><MdOutlineDashboardCustomize /></NavLink>
                 {
                     user ?
@@ -51,7 +55,9 @@ const Navbar = () => {
                                         {user?.displayName}
                                     </a>
                                 </li>
-                                <li><a>Settings</a></li>
+                                <li><Link to="/dashboard">Dashboard</Link></li>
+                                <li><Link to="/admindashboard">Admin Dashboard</Link></li>
+                                <li><Link to="/deliverydashboard">Delivery man Dashboard</Link></li>
                                 <li onClick={handleLogOut}><a>Logout</a></li>
                             </ul>
                         </div>
