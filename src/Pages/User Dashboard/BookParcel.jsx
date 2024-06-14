@@ -1,7 +1,11 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const BookParcel = () => {
+    const { user } = useContext(AuthContext)
+    const axiosPublic = useAxiosPublic()
+
     const [formData, setFormData] = useState({
         senderName: '',
         senderEmail: '',
@@ -44,8 +48,28 @@ const BookParcel = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add booking logic here (e.g., form validation, API call)
         console.log(formData);
+        const userInfo = {
+            senderName: user.displayName,
+            senderEmail: user.email,
+            senderPhoneNumber: formData.senderPhoneNumber,
+            parcelType: formData.parcelType,
+            parcelWeight: formData.parcelWeight,
+            receiverName: formData.receiverName,
+            receiverPhoneNumber: formData.senderPhoneNumber,
+            deliveryAddress: formData.deliveryAddress,
+            receiverAddress: formData.receiverAddress,
+            price: formData.price,
+
+        }
+        axiosPublic.post('/bookingParcel', userInfo)
+            .then(res => {
+                console.log(res)
+                if (res.data.insertedId) {
+                    console.log("Parcel delivery booking successful")
+                }
+            })
+            .catch(error => console.log(error))
     };
 
     return (
@@ -61,7 +85,7 @@ const BookParcel = () => {
                                     type="text"
                                     id="senderName"
                                     name="senderName"
-                                    value={formData.senderName}
+                                    value={user?.displayName}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
                                     required
@@ -73,7 +97,7 @@ const BookParcel = () => {
                                     type="email"
                                     id="senderEmail"
                                     name="senderEmail"
-                                    value={formData.senderEmail}
+                                    value={user?.email}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:border-blue-500"
                                     required
