@@ -16,7 +16,9 @@ const BookParcel = () => {
         receiverPhoneNumber: '',
         deliveryAddress: '',
         receiverAddress: '',
-        price: 0
+        price: 0,
+        status: 'pending',
+        deliveryman: '',
     });
 
     const handleChange = (e) => {
@@ -60,6 +62,8 @@ const BookParcel = () => {
             deliveryAddress: formData.deliveryAddress,
             receiverAddress: formData.receiverAddress,
             price: formData.price,
+            status: formData.status,
+            deliveryman: formData.deliveryman,
 
         }
         axiosPublic.post('/bookingParcel', userInfo)

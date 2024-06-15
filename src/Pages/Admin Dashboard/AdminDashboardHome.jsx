@@ -49,7 +49,7 @@ const AdminDashboardHome = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-            <div className="max-w-7xl w-full bg-white shadow-md rounded-lg p-8">
+            <div className="max-w-7xl w-full rounded-lg p-8">
                 <h1 className="text-3xl font-extrabold text-center text-gray-900 mb-6">Admin Dashboard Statistics</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-lg shadow-lg">

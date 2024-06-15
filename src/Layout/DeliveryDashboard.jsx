@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const DeliveryDashboard = () => {
+    const {user} = useContext(AuthContext);
     return (
         <div className="flex">
             {/* Dashboard sideBar */}
@@ -8,9 +11,9 @@ const DeliveryDashboard = () => {
                 <div className="flex items-center p-2 space-x-4">
                     <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
                     <div>
-                        <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
+                        <h2 className="text-lg font-semibold">{user?.displayName}</h2>
                         <span className="flex items-center space-x-1">
-                            <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-600">View profile</a>
+                            <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-600">{user?.email}</a>
                         </span>
                     </div>
                 </div>

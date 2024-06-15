@@ -6,7 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useEffect } from "react";
 
 const MyParcels = () => {
-       const { user } = useContext(AuthContext);
+       const { user,  } = useContext(AuthContext);
     // console.log(user.email)
     // console.log(user)
     const [parcels, setparcels] = useState([]);
@@ -26,10 +26,10 @@ const MyParcels = () => {
         fetch(`${import.meta.env.VITE_API_URL}/bookingParcels`)
         .then(res => res.json())
         .then(data => {
-            const usersparccels = data.filter(parcel =>parcel.senderEmail === user.email);
+            const usersparccels = data.filter(parcel =>parcel.senderEmail === user?.email);
             setparcels(usersparccels)
         })
-    },[user.email])
+    },[user?.email])
 
 
 

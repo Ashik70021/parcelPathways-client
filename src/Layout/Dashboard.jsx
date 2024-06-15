@@ -1,18 +1,25 @@
+import { useContext} from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+
+
 
 
 const Dashboard = () => {
+    const {user} = useContext(AuthContext);
+    console.log(user)
 
     return (
         <div className="flex">
+            
             {/* Dashboard sideBar */}
             <div className="bg-orange-400 min-h-screen p-3 space-y-2 w-60 dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex items-center p-2 space-x-4">
                     <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
                     <div>
-                        <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
+                        <h2 className="text-lg font-semibold">{user?.displayName}</h2>
                         <span className="flex items-center space-x-1">
-                            <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-600">View profile</a>
+                            <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-600">{user?.email}</a>
                         </span>
                     </div>
                 </div>

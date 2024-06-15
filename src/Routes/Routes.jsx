@@ -23,6 +23,7 @@ import AdminDashboardHome from "../Pages/Admin Dashboard/AdminDashboardHome";
 import DeliveryDashboardHome from "../Pages/DeliveryDashboard/DeliveryDashboardHome";
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -63,6 +64,7 @@ export const router = createBrowserRouter([
         path: 'myparcel',
         element: <MyParcel></MyParcel>,
       },
+      
 
     ]
   },
@@ -88,6 +90,7 @@ export const router = createBrowserRouter([
         path: 'parcels',
         element: <AllParcel></AllParcel>,
       },
+      
     ]
   },
 
@@ -108,6 +111,7 @@ export const router = createBrowserRouter([
         path: 'reviews',
         element: <MyReviews></MyReviews>,
       },
+      
       
     ]
   },
