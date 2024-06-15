@@ -1,20 +1,21 @@
 import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 
 const AllUsers = () => {
-    
+
     const [onlyUsers, setOnlyUsers] = useState([]);
     const axiosSecure = useAxiosSecure();
     const { data: sampleUsers = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users');  
+            const res = await axiosSecure.get('/users');
             const filteredUser = sampleUsers.filter(user => user.type === 'User')
             setOnlyUsers(filteredUser)
-            return res.data;     
-        }       
+            return res.data;
+        }
     })
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +26,7 @@ const AllUsers = () => {
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = onlyUsers.slice(indexOfFirstUser, indexOfLastUser);
     console.log(currentUsers);
-    
+
 
 
 
@@ -59,12 +60,14 @@ const AllUsers = () => {
                                 <td className="py-2 px-4 border-b">{user.parcelsBooked}</td>
                                 <td className="py-2 px-4 border-b">${user.totalSpent}</td>
                                 <td className="py-2 px-4 border-b">
-                                    <button
-                                        // onClick={() => handleMakeDeliveryMan(indexOfFirstUser + index)}
-                                        className="bg-blue-500 text-white py-1 px-3 rounded mr-2"
-                                    >
-                                        Make Delivery Man
-                                    </button>
+                                    <Link to={`/updateUser/${user._id}`}>
+                                        <button
+                                            // onClick={() => handleMakeDeliveryMan(indexOfFirstUser + index)}
+                                            className="bg-blue-500 text-white py-1 px-3 rounded mr-2"
+                                        >
+                                            Make Delivery Man
+                                        </button>
+                                    </Link>
                                     <button
                                         // onClick={() => handleMakeAdmin(indexOfFirstUser + index)}
                                         className="bg-green-500 text-white py-1 px-3 rounded"

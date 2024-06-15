@@ -1,8 +1,11 @@
 import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 
 const AllDeliveryMan = () => {
+    const {id} = useParams();
     const [onlyUsers, setOnlyUsers] = useState([]);
     const axiosSecure = useAxiosSecure();
     const { data: sampleUsers = [], refetch } = useQuery({
@@ -14,6 +17,24 @@ const AllDeliveryMan = () => {
             return res.data;
         }
     })
+
+    const handleUpdate = async (e) => { 
+        e.preventDefault()    
+        const userData = {
+            type: "User"
+        }
+        try {
+            const { data } = await axios.put(
+                `${import.meta.env.VITE_API_URL}/updateUser/${id}`,
+                userData
+            )
+            console.log(data)
+            console.log("Update successfully")
+            
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const [currentPage, setCurrentPage] = useState(1);
     const usersPerPage = 5;
@@ -57,12 +78,14 @@ const AllDeliveryMan = () => {
                                 <td className="py-2 px-4 border-b">{user.parcelsBooked}</td>
                                 <td className="py-2 px-4 border-b">${user.totalSpent}</td>
                                 <td className="py-2 px-4 border-b">
-                                    <button
+                                <Link to={`/updateUser/${user._id}`}>
+                                    <button onClick={handleUpdate}
                                         // onClick={() => handleMakeDeliveryMan(indexOfFirstUser + index)}
                                         className="bg-blue-500 text-white py-1 px-3 rounded mr-2"
                                     >
                                         Make User
                                     </button>
+                                    </Link>
                                     <button
                                         // onClick={() => handleMakeAdmin(indexOfFirstUser + index)}
                                         className="bg-green-500 text-white py-1 px-3 rounded"

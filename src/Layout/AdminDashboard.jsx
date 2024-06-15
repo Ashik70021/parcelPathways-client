@@ -8,7 +8,7 @@ const AdminDashboard = () => {
     return (
         <div className="flex">
             {/* Dashboard sideBar */}
-            <div className="bg-[#93d9d9] min-h-screen p-3 space-y-2 w-60 dark:bg-gray-50 dark:text-gray-800">
+            <div className="bg-[#ffe29a] min-h-screen p-3 space-y-2 w-60 dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex items-center p-2 space-x-4">
                     <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
                     <div>

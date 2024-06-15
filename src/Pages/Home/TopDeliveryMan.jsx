@@ -1,37 +1,37 @@
 
 const deliveryMen = [
     {
-        name: 'John Doe',
+        name: 'sajib',
         image: 'https://via.placeholder.com/150', 
         parcelsDelivered: 200,
         rating: 4.9
     },
     {
-        name: 'Jane Smith',
+        name: 'ashik',
         image: 'https://via.placeholder.com/150', 
         parcelsDelivered: 180,
         rating: 4.8
     },
     {
-        name: 'Robert Johnson',
+        name: 'zaber',
         image: 'https://via.placeholder.com/150', 
         parcelsDelivered: 220,
         rating: 5.0
     },
     {
-        name: 'Alice Brown',
+        name: 'Fahim',
         image: 'https://via.placeholder.com/150', 
         parcelsDelivered: 210,
         rating: 3.9
     },
     {
-        name: 'James White',
+        name: 'Anik',
         image: 'https://via.placeholder.com/150', 
         parcelsDelivered: 170,
         rating: 4.5
     },
     {
-        name: 'Emma Green',
+        name: 'Zobaer',
         image: 'https://via.placeholder.com/150', 
         parcelsDelivered: 240,
         rating: 4.1
