@@ -32,9 +32,9 @@ const Features = () => {
                             </div>
                             <h3 className="text-xl font-semibold mb-2">{feature.safetyTag}</h3>
                             <p className="text-gray-600">{feature.description}</p>
-                            <div className="absolute inset-0 bg-black bg-opacity-75 text-white flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            {/* <div className="absolute inset-0 bg-black bg-opacity-75 text-white flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <span className="text-lg font-semibold">Total booked: {feature.totalBooked}</span>
-                            </div>
+                            </div> */}
                         </div>
                     ))}
                 </div>

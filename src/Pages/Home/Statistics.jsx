@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Statistics = () => {
     // Sample data for demonstration purposes
@@ -9,11 +9,11 @@ const Statistics = () => {
         totalUsers: 300
     };
 
-    const axiosSecure = useAxiosSecure();
+    const axiosPublic = useAxiosPublic()
     const { data: parcels = [] } = useQuery({
         queryKey: ['parcels'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/bookingParcels');
+            const res = await axiosPublic.get('/bookingParcels');
             return res.data;
         }
     });
@@ -21,7 +21,7 @@ const Statistics = () => {
     const { data: sampleUsers = []} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users');
+            const res = await axiosPublic.get('/users');
             return res.data;
         }
     })

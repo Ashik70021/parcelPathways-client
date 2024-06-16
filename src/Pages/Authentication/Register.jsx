@@ -33,7 +33,7 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                updateUserProfile(formData.name, formData.photoURL)
+                updateUserProfile(formData.name, formData.image)
                     .then(() => {
                         // Create user entry in Database
                         const userInfo = {

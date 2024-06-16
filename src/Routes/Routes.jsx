@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
   // User Dashboard
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: 'userhome',
@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
   // Admin Dashboard
   {
     path: 'admindashboard',
-    element: <AdminDashboard></AdminDashboard>,
+    element: <PrivateRoute><AdminDashboard></AdminDashboard></PrivateRoute>,
     children: [
       {
         path: 'adminhome',
@@ -97,7 +97,7 @@ export const router = createBrowserRouter([
   // Delivery Man Dashboard
   {
     path: 'deliverydashboard',
-    element: <DeliveryDashboard></DeliveryDashboard>,
+    element:  <PrivateRoute><DeliveryDashboard></DeliveryDashboard></PrivateRoute>,
     children: [
       {
         path: 'deliveryhome',

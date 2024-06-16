@@ -60,14 +60,14 @@ const AllUsers = () => {
                                 <td className="py-2 px-4 border-b">{user.parcelsBooked}</td>
                                 <td className="py-2 px-4 border-b">${user.totalSpent}</td>
                                 <td className="py-2 px-4 border-b">
-                                    <Link to={`/updateUser/${user._id}`}>
+                                    
                                         <button
                                             // onClick={() => handleMakeDeliveryMan(indexOfFirstUser + index)}
                                             className="bg-blue-500 text-white py-1 px-3 rounded mr-2"
                                         >
                                             Make Delivery Man
                                         </button>
-                                    </Link>
+                                    
                                     <button
                                         // onClick={() => handleMakeAdmin(indexOfFirstUser + index)}
                                         className="bg-green-500 text-white py-1 px-3 rounded"
