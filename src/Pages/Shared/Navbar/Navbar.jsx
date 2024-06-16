@@ -48,7 +48,7 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink to="/"><a>Home</a></NavLink></li>
         <li><NavLink to="/aboutUs"><a>About us</a></NavLink></li>
-        <li><NavLink to="/secret"><a>Secret</a></NavLink></li>
+        
     </>
     return (
         <div className="navbar bg-base-100">
