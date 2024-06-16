@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
@@ -6,13 +6,19 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 
 const Dashboard = () => {
-    const {user} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     console.log(user)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
 
     return (
         <div className="flex">
-            
+
             {/* Dashboard sideBar */}
             <div className="bg-[#c2a3ff] min-h-screen p-3 space-y-2 w-60 dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex items-center p-2 space-x-4">
@@ -25,7 +31,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="divide-y dark:divide-gray-300">
-                    <ul className="menu pt-2 pb-4 space-y-1 text-sm"> 
+                    <ul className="menu pt-2 pb-4 space-y-1 text-sm">
 
                         <li className="dark:bg-gray-100 dark:text-gray-900">
                             <Link to="/dashboard/userhome">
@@ -82,13 +88,15 @@ const Dashboard = () => {
                             </a>
                         </li>
                         <li>
-                            <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current dark:text-gray-600">
-                                    <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
-                                    <rect width="32" height="64" x="256" y="232"></rect>
-                                </svg>
-                                <span>Logout</span>
-                            </a>
+                            <Link onClick={handleLogOut}>
+                                <div className="flex gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current dark:text-gray-600">
+                                        <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
+                                        <rect width="32" height="64" x="256" y="232"></rect>
+                                    </svg>
+                                    <span>Logout</span>
+                                </div>
+                            </Link>
                         </li>
                     </ul>
                 </div>

@@ -6,7 +6,7 @@ import Home from "../Pages/Home/Home";
 import Root from "../Layout/Root";
 import Register from "../Pages/Authentication/Register";
 import Login from "../Pages/Authentication/Login";
-import Secret from "../Pages/Secret";
+
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import BookParcel from "../Pages/User Dashboard/BookParcel";
@@ -40,10 +40,6 @@ export const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
-      },
-      {
-        path: '/secret',
-        element: <PrivateRoute> <Secret></Secret> </PrivateRoute>
       },
     ]
   },

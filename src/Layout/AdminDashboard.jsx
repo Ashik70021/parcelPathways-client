@@ -4,7 +4,12 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 
 const AdminDashboard = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     return (
         <div className="flex">
             {/* Dashboard sideBar */}
@@ -90,14 +95,16 @@ const AdminDashboard = () => {
                                 <span>My Profile</span>
                             </a>
                         </li>
-                        <li>
-                            <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current dark:text-gray-600">
-                                    <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
-                                    <rect width="32" height="64" x="256" y="232"></rect>
-                                </svg>
-                                <span>Logout</span>
-                            </a>
+                        <li className="dark:bg-gray-100 dark:text-gray-900">
+                            <Link onClick={handleLogOut}>
+                                <div className="flex gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current dark:text-gray-600">
+                                        <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
+                                        <rect width="32" height="64" x="256" y="232"></rect>
+                                    </svg>
+                                    <span>Logout</span>
+                                </div>
+                            </Link>
                         </li>
                     </ul>
                 </div>
