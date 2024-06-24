@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const BookParcel = () => {
     const { user } = useContext(AuthContext)
@@ -70,7 +71,7 @@ const BookParcel = () => {
             .then(res => {
                 console.log(res)
                 if (res.data.insertedId) {
-                    console.log("Parcel delivery booking successful")
+                    toast.success("Parcel delivery booking successful")
                 }
             })
             .catch(error => console.log(error))

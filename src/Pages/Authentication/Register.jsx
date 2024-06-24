@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const Register = () => {
     const axiosPublic = useAxiosPublic()
@@ -46,9 +47,7 @@ const Register = () => {
                             .then(res => {
                                 console.log(res)
                                 if (res.data.insertedId) {
-                               
-                                    console.log("user profile info updated")
-
+                                    toast.success("user profile info updated")
                                     navigate('/');
                                 }
                             })

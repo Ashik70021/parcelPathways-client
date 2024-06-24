@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const Login = () => {
 
@@ -26,6 +27,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                toast.success("log in successfull")
                 navigate(from, {replace: true});
             })
     }
