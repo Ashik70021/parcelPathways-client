@@ -3,6 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AllParcel = () => {
+    const [deliveryMan, setDeliveryMan] = useState('')
+    console.log(deliveryMan)
+    
     const axiosSecure = useAxiosSecure();
     const { data: parcels = [], refetch } = useQuery({
         queryKey: ['parcels'],
@@ -11,6 +14,10 @@ const AllParcel = () => {
             return res.data;
         }
     });
+
+    const handleDeliveryMan = (event) => {
+        setDeliveryMan(event.target.value)
+    }
 
     return (
         <div className="min-h-screen bg-gray-100 p-8">
@@ -40,7 +47,8 @@ const AllParcel = () => {
                                     {parcel.status}
                                 </td>
                                 <td className="py-2 border-b text-center">
-                                    <button className="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600">
+                                    <button className="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600"
+                                        onClick={() => document.getElementById('my_modal_3').showModal()}>
                                         Manage
                                     </button>
                                 </td>
@@ -48,6 +56,24 @@ const AllParcel = () => {
                         ))}
                     </tbody>
                 </table>
+                {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                <dialog id="my_modal_3" className="modal">
+                    <div className="modal-box">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        <h3 className="font-bold text-lg text-center">Assign Delivery Man</h3>
+                        <form action="" className='text-center mt-4'>
+                            <label>Select a delivery man:</label>
+                            <select id="deliveryMan" value={deliveryMan} onChange={handleDeliveryMan} className='mr-2 input-border px-4'>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                            </select> <br />
+                            <button className='mt-6 border-2 rounded-md px-4 py-2 items-center'>Asign</button>
+                        </form>
+                    </div>
+                </dialog>
             </div>
         </div>
     );
