@@ -37,14 +37,14 @@ const MyParcels = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="max-w-7xl w-full bg-white shadow-md rounded-lg p-8">
+            <div className="max-w-7xl w-full rounded-lg p-8">
                 <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-6">My Parcels: {parcels.length}</h2>
-                <table className="min-w-full bg-white">
+                <table className="min-w-full">
                     <thead>
                         <tr>
                             <th className="py-2">Parcel Type</th>
                             {/* <th className="py-2">Requested Delivery Date</th> */}
-                            <th className="py-2">Approximate Delivery Date</th>
+                            {/* <th className="py-2">Approximate Delivery Date</th> */}
                             <th className="py-2">Booking Date</th>
                             <th className="py-2">Delivery Men ID</th>
                             <th className="py-2">Booking Status</th>
@@ -55,12 +55,12 @@ const MyParcels = () => {
                         {parcels.map((parcel) => (
                             <tr key={parcel.id}>
                                 <td className="py-2 text-center">{parcel.parcelType}</td>
-                                <td className="py-2 text-center">{parcel.requestedDeliveryDate}</td>
+                                {/* <td className="py-2 text-center">{parcel.requestedDeliveryDate}</td> */}
                                 {/* <td className="py-2 text-center">{parcel.approximateDeliveryDate}</td> */}
                                 <td className="py-2 text-center">{parcel.bookingDate}</td>
-                                <td className="py-2 text-center">{parcel.deliveryMenID || 'Not Assigned'}</td>
-                                <td className={`py-2 text-center ${parcel.bookingStatus === 'delivered' ? 'text-green-500' : 'text-red-500'}`}>
-                                    {parcel.bookingStatus}
+                                <td className="py-2 text-center">{parcel.deliveryman || 'Not Assigned'}</td>
+                                <td className={`py-2 text-center ${parcel.status === 'delivered' ? 'text-green-500' : 'text-red-500'}`}>
+                                    {parcel.status}
                                 </td>
                                 <td className="py-2 text-center space-x-2">
                                     <button
