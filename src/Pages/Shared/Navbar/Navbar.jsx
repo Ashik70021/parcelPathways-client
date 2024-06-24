@@ -3,7 +3,7 @@ import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { IoIosNotifications } from "react-icons/io";
-
+import logo from "../../../assets/images/pngwing.com.png"
 
 
 
@@ -61,8 +61,11 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-
+                <div className="flex gap-4 items-center">
+                    <img className="w-[12%]" src={logo} alt="" />
                 <a className="text-3xl font-semibold">ParcelPathway</a>
+                </div>
+                
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
